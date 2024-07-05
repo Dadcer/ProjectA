@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmaxk0kax0g88"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryUI.cs" id="1_viwrn"]
+[ext_resource type="Texture2D" uid="uid://vhyyqf1fms0i" path="res://sword_0000_Фигура-1.png" id="2_tcdjm"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -901.0
+offset_bottom = -390.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_viwrn")
+
+[node name="Weapon1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 80.0
+offset_bottom = 101.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Weapon2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 1.0
+offset_right = 160.0
+offset_bottom = 101.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Armor" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 102.0
+offset_right = 160.0
+offset_bottom = 202.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Item1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 2.0
+offset_right = 202.0
+offset_bottom = 42.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Item2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 2.0
+offset_right = 243.0
+offset_bottom = 42.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Item3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 45.0
+offset_right = 202.0
+offset_bottom = 85.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Item4" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 45.0
+offset_right = 243.0
+offset_bottom = 85.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Item5" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 87.0
+offset_right = 202.0
+offset_bottom = 127.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Item6" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 87.0
+offset_right = 243.0
+offset_bottom = 127.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Item7" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 130.0
+offset_right = 202.0
+offset_bottom = 170.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="Item8" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 130.0
+offset_right = 243.0
+offset_bottom = 170.0
+texture_normal = ExtResource("2_tcdjm")
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 244.0
+offset_right = 252.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

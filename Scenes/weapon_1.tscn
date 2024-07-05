@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbx3enovk0ixs"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_1.cs" id="1_75fc2"]
+[ext_resource type="Texture2D" uid="uid://vhyyqf1fms0i" path="res://sword_0000_Фигура-1.png" id="2_pw87v"]
+[ext_resource type="Texture2D" uid="uid://b1axuq7hlqhk0" path="res://sword_0001_Фигура-2.png" id="3_6a114"]
+[ext_resource type="Texture2D" uid="uid://cfitxygxexp74" path="res://sword_0002_Фигура-3.png" id="4_hatko"]
+[ext_resource type="Texture2D" uid="uid://brno5tboknseg" path="res://sword_0003_Фигура-4.png" id="5_vyypj"]
+[ext_resource type="Texture2D" uid="uid://gmbjtkhoajx6" path="res://sword_0004_Фигура-5.png" id="6_7qopf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4pox"]
+size = Vector2(50.75, 39.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14l46"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": ExtResource("2_pw87v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6a114")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hatko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vyypj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7qopf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Weapon" type="Area2D"]
+script = ExtResource("1_75fc2")
+weaponDamage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(39.625, 10.75)
+shape = SubResource("RectangleShape2D_y4pox")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(36, 10)
+rotation = -0.120428
+scale = Vector2(3.25506, 2.67406)
+sprite_frames = SubResource("SpriteFrames_14l46")
+frame_progress = 0.916342
+speed_scale = 1.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

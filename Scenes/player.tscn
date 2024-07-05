@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxmgmb8jjoygt"]
+
+[ext_resource type="Script" path="res://Scripts/player.cs" id="1_58mmk"]
+[ext_resource type="Texture2D" uid="uid://dmbwkvkspkqp5" path="res://гг(прототип).png" id="4_u1hpj"]
+[ext_resource type="PackedScene" uid="uid://dbunhix38mig1" path="res://Scenes/UI.tscn" id="7_a040k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wphu5"]
+size = Vector2(15, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3s1h"]
+size = Vector2(524, 454)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(693, 275)
+script = ExtResource("1_58mmk")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("4_u1hpj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_wphu5")
+
+[node name="Control" parent="." instance=ExtResource("7_a040k")]
+offset_left = -80.0
+offset_top = 35.0
+offset_right = -80.0
+offset_bottom = 35.0
+
+[node name="EnemyCheckArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCheckArea"]
+position = Vector2(-4, -10)
+shape = SubResource("RectangleShape2D_y3s1h")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 2.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="EnemyCheckArea" to="." method="_on_enemy_check_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
