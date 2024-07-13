@@ -50,9 +50,10 @@ public partial class player : CharacterBody2D
 		
 		if(Input.IsActionJustPressed("openInventory")) 
 		{
-		PackedScene inventory = (PackedScene)ResourceLoader.Load("res://Scenes/InventoryUI.tscn");
-		Node subInventoryInstance=inventory.Instantiate();
-		AddChild(subInventoryInstance);
+			// TODO: убрать создание инвентаря, чтобы он был создан на сцене
+			PackedScene inventory = (PackedScene)ResourceLoader.Load("res://Scenes/InventoryUI.tscn");
+			Node subInventoryInstance=inventory.Instantiate();
+			AddChild(subInventoryInstance);
 		}
 	}
 	public void inventoryAdd(InventoryItem item) 
