@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxmgmb8jjoygt"]
 
 [ext_resource type="Script" path="res://Scripts/player.cs" id="1_58mmk"]
-[ext_resource type="Texture2D" uid="uid://dmbwkvkspkqp5" path="res://гг(прототип).png" id="4_u1hpj"]
+[ext_resource type="Texture2D" uid="uid://bv5f7teb6ogmo" path="res://Scenes/player/textures/player_idle.png" id="2_7jgbk"]
 [ext_resource type="PackedScene" uid="uid://dbunhix38mig1" path="res://Scenes/UI.tscn" id="7_a040k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wphu5"]
@@ -17,7 +17,8 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("4_u1hpj")
+scale = Vector2(0.335938, 0.335938)
+texture = ExtResource("2_7jgbk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
