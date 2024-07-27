@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmthnkyd8bcif"]
+
+[ext_resource type="Script" path="res://Scripts/Marker.cs" id="1_aratc"]
+[ext_resource type="Texture2D" uid="uid://bhpw8gha07cwm" path="res://marker.png" id="2_qp5xr"]
+
+[node name="Marker" type="Node2D"]
+script = ExtResource("1_aratc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.775, 0.725)
+texture = ExtResource("2_qp5xr")

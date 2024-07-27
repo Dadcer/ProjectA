@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxmgmb8jjoygt"]
+[gd_scene load_steps=8 format=3 uid="uid://cxmgmb8jjoygt"]
 
 [ext_resource type="Script" path="res://Scripts/player.cs" id="1_58mmk"]
 [ext_resource type="Texture2D" uid="uid://bv5f7teb6ogmo" path="res://Scenes/player/textures/player_idle.png" id="2_7jgbk"]
+[ext_resource type="Resource" uid="uid://cmai75gqg2nui" path="res://Resourse/weaponTest.tres" id="2_uat5f"]
+[ext_resource type="PackedScene" uid="uid://dmthnkyd8bcif" path="res://Scenes/Marker.tscn" id="4_4khni"]
 [ext_resource type="PackedScene" uid="uid://dbunhix38mig1" path="res://Scenes/UI.tscn" id="7_a040k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wphu5"]
@@ -11,8 +13,9 @@ size = Vector2(15, 63)
 size = Vector2(524, 454)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(693, 275)
+position = Vector2(-173, -90)
 script = ExtResource("1_58mmk")
+weapon = ExtResource("2_uat5f")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -33,6 +36,7 @@ offset_bottom = 35.0
 [node name="EnemyCheckArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCheckArea"]
+visible = false
 position = Vector2(-4, -10)
 shape = SubResource("RectangleShape2D_y3s1h")
 
@@ -41,6 +45,8 @@ process_mode = 3
 wait_time = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Marker" parent="." instance=ExtResource("4_4khni")]
 
 [connection signal="body_entered" from="EnemyCheckArea" to="." method="_on_enemy_check_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

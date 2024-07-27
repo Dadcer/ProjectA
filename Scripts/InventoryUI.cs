@@ -32,7 +32,6 @@ public partial class InventoryUI : Control
 	}
 
     public void _on_exit_button_pressed() {
-		// TODO: убрать удаление, заменить на скрытие
-		QueueFree();
+		this.Visible=false;
 	}
 }

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class InventoryItem : Resource
+public partial class WeaponRes : Resource
 {
  [Export]
  public string name;

@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" path="res://Scripts/Item.cs" id="1_v86w0"]
 [ext_resource type="Texture2D" uid="uid://oaqluqvft37c" path="res://exclamation_spritesheet_01.png" id="2_h4xv3"]
-[ext_resource type="Resource" uid="uid://ccst6alrbypv" path="res://Resourse/Item.tres" id="2_ttjpg"]
+
+[sub_resource type="Resource" id="Resource_ah6kn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ob4oa"]
 size = Vector2(121, 33)
 
 [node name="Item" type="Node2D"]
 script = ExtResource("1_v86w0")
-item = ExtResource("2_ttjpg")
+item = SubResource("Resource_ah6kn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_h4xv3")

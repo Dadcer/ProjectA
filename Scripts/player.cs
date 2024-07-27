@@ -4,13 +4,13 @@ using System.Text.Unicode;
 
 public partial class player : CharacterBody2D
 {
+	public Marker marker;
+	[Export]
+	public WeaponRes weapon;
 	[Export]
 	public Inventory inventory;
-	[Export] 
-	public Cursor cursor;
 	public static player Instance;
 	public enemy enemy;
-	public int numberWeapon=1;
 	public Vector2 _target;
 	public Vector2 targetPosition;
 	[Export]
@@ -28,23 +28,29 @@ public partial class player : CharacterBody2D
 	
 	public  player() {
 		inventory=new Inventory();
+		marker=new Marker();
 	}
-
-	[Export]
-	public Godot.Collections.Array<WeaponResource> Weapons = new Godot.Collections.Array<WeaponResource>();
-	public int CurrentWeaponIdx = 0;
-	public WeaponResource CurrentWeaponRes {get {return Weapons[CurrentWeaponIdx];}}
-
 	public void hpCheckPLayer() {
 		if(hpPlayer<=0) {
 			QueueFree();
 		}
+	}
+	public void SetPayerRotation() {
+		
 	}
 	public void moveDetect() 
 	{
 		_target=Input.GetVector("left", "right", "up", "down");
 		Velocity=_target*speedPlayer;
 		MoveAndSlide();
+	}
+	public void attackDetect() {
+		if(Input.IsActionJustPressed("mouseClickLeft") ) {
+			PackedScene bullet=(PackedScene)ResourceLoader.Load("res://Scenes/Bullet.tscn");
+			Node bullet1=bullet.Instantiate();
+			AddChild(bullet1);
+			bullet1.setParameters(weapon.damage, weapon.speed);
+		}
 	}
 	public void inventoryOpenCheck() {
 		
@@ -82,9 +88,6 @@ public partial class player : CharacterBody2D
 
 		}
 	}
-	public void attack() {
-		cursor.enemies[0].takeDamage(damage);
-	}
 	public override void _Ready()
 	{
 		
@@ -95,6 +98,8 @@ public partial class player : CharacterBody2D
 	}
 	public override void _Process(double delta)
 	{
+		attackDetect();
+		SetPayerRotation();
 		GetPlayerStopTime();
 		moveDetect();
 		hpCheckPLayer();

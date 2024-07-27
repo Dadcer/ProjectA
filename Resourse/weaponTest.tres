@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cmai75gqg2nui"]
+
+[ext_resource type="Script" path="res://Scripts/WeaponRes.cs" id="1_txex7"]
+[ext_resource type="Texture2D" uid="uid://dbouogpwhhcju" path="res://Scenes/items/revolver/revolver.png" id="2_6svv4"]
+
+[resource]
+script = ExtResource("1_txex7")
+name = "revolver"
+damage = 1.0
+speed = 15.0
+texture = ExtResource("2_6svv4")
