@@ -4,6 +4,7 @@ using System.Text.Unicode;
 
 public partial class player : CharacterBody2D
 {
+	public Bullet bulllet_;
 	public Marker marker;
 	[Export]
 	public WeaponRes weapon;
@@ -29,6 +30,7 @@ public partial class player : CharacterBody2D
 	public  player() {
 		inventory=new Inventory();
 		marker=new Marker();
+		bulllet_=new Bullet();
 	}
 	public void hpCheckPLayer() {
 		if(hpPlayer<=0) {
@@ -45,11 +47,12 @@ public partial class player : CharacterBody2D
 		MoveAndSlide();
 	}
 	public void attackDetect() {
-		if(Input.IsActionJustPressed("mouseClickLeft") ) {
-			PackedScene bullet=(PackedScene)ResourceLoader.Load("res://Scenes/Bullet.tscn");
-			Node bullet1=bullet.Instantiate();
-			AddChild(bullet1);
-			bullet1.setParameters(weapon.damage, weapon.speed);
+		if(Input.IsActionJustPressed("attack") ) {
+			PackedScene _bullet=(PackedScene)ResourceLoader.Load("res://Scenes/Bullet.tscn");
+			var bullet=_bullet.Instantiate<Bullet>();
+			GetParent().AddChild(bullet);
+			bullet.GlobalPosition=GlobalPosition;
+			bullet.setParameters(weapon.damage,weapon.speed,GetGlobalMousePosition());
 		}
 	}
 	public void inventoryOpenCheck() {
