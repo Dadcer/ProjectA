@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuuacjth4jlx3"]
+
+[ext_resource type="Texture2D" uid="uid://b5a5jxdyhtkpl" path="res://Textures/wall1.png" id="1_olsmt"]
+[ext_resource type="Script" path="res://Scripts/Cursor.cs" id="1_ya1iy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_twts1"]
+
+[node name="cursor" type="Area2D" node_paths=PackedStringArray("sprite")]
+process_mode = 3
+script = ExtResource("1_ya1iy")
+sprite = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-2.08616e-07, 0)
+scale = Vector2(0.03125, 0.0625)
+texture = ExtResource("1_olsmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_twts1")
