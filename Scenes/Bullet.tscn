@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Bullet.cs" id="1_ovsfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehwvo"]
-size = Vector2(87, 6)
+size = Vector2(58.5, 6)
 
 [node name="Bullet" type="CharacterBody2D"]
 position = Vector2(29, 31)
@@ -13,10 +13,10 @@ collision_mask = 3
 script = ExtResource("1_ovsfy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(42, 0.5)
-scale = Vector2(5.5, 2.6875)
+position = Vector2(27, 0.5)
+scale = Vector2(3.625, 2.6875)
 texture = ExtResource("1_4gy5n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(42.5, 0.5)
+position = Vector2(26.25, 1)
 shape = SubResource("RectangleShape2D_ehwvo")
