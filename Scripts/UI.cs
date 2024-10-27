@@ -18,6 +18,13 @@ public partial class UI : Control
 		bar.Value=newTime;
 
 	}
+	public void rechargeBar(float ammo, float magazine) {
+		var bar=GetNode<ProgressBar>("RechargeBar");
+		bar.ShowPercentage=false;
+		bar.Value=ammo;
+		bar.MaxValue=magazine;
+		bar.MinValue=0;
+	}
 		public void IconChange() 
 	{
 		var icon=GetNode<TextureRect>("TextureRect");
@@ -34,5 +41,6 @@ public partial class UI : Control
 		var timer=player.Instance.GetNode<Timer>("Timer");
 		HpBarChange(player.Instance.hpPlayer,player.Instance.maxHpPlayer);
 		TimeBarChange((float)timer.TimeLeft,(float)timer.WaitTime);
+		rechargeBar(player.Instance.magazine, player.Instance.weapon.magazine);
 	}
 }

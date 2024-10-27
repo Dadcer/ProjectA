@@ -10,5 +10,11 @@ public partial class WeaponRes : Resource
  [Export]
  public float speed;
  [Export]
+ public float magazine;
+ [Export]
+ public float ammoConsume;
+ [Export]
+ public float rechargeTime;
+ [Export]
  public Texture2D texture;
 }

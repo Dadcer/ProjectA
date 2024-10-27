@@ -8,4 +8,7 @@ script = ExtResource("1_txex7")
 name = "revolver"
 damage = 1.0
 speed = 15.0
+magazine = 5.0
+ammoConsume = 1.0
+rechargeTime = 2.0
 texture = ExtResource("2_6svv4")

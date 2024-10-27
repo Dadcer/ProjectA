@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjdl282cgqljm"]
+
+[ext_resource type="Texture2D" uid="uid://c464chbqer6k5" path="res://pixel-art-rat-graphic-i1l1viuicm62pva3.jpg" id="1_1l53k"]
+[ext_resource type="Script" path="res://Scripts/rat.cs" id="1_c6gkg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_55o7f"]
+radius = 66.0681
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hxq0"]
+size = Vector2(85, 40)
+
+[node name="rat" type="CharacterBody2D"]
+script = ExtResource("1_c6gkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(45, 18)
+scale = Vector2(0.163405, 0.162835)
+texture = ExtResource("1_1l53k")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(6, 6)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(36, 18)
+shape = SubResource("CircleShape2D_55o7f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(42.5, 20)
+rotation = -0.00640625
+shape = SubResource("RectangleShape2D_8hxq0")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

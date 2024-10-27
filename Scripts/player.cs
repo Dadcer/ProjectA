@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Text.Unicode;
+using System.Timers;
 
 public partial class player : CharacterBody2D
 {
@@ -8,6 +9,8 @@ public partial class player : CharacterBody2D
 	public Marker marker;
 	[Export]
 	public WeaponRes weapon;
+	[Export]
+	public float magazine;
 	[Export]
 	public Inventory inventory;
 	public static player Instance;
@@ -46,14 +49,45 @@ public partial class player : CharacterBody2D
 		Velocity=_target*speedPlayer;
 		MoveAndSlide();
 	}
+	public void setMagazine(){
+		magazine=weapon.magazine;
+	}
 	public void attackDetect() {
-		if(Input.IsActionJustPressed("attack") ) {
+		if(Input.IsActionJustPressed("attack")&&magazinCheck(magazine) is true) {
 			PackedScene _bullet=(PackedScene)ResourceLoader.Load("res://Scenes/Bullet.tscn");
 			var bullet=_bullet.Instantiate<Bullet>();
 			GetParent().AddChild(bullet);
 			bullet.GlobalPosition=GlobalPosition;
 			bullet.setParameters(weapon.damage,weapon.speed,GetGlobalMousePosition());
+			magazine=magazine-1;
 		}
+		else if(magazinCheck(magazine) is false) 
+		{
+			GD.Print("d");
+			magazineRecharge(weapon.rechargeTime);
+		}
+	}
+	public bool magazinCheck(float magazine) 
+	{
+		if(magazine<=0) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	public void magazineRecharge(float rechargeTime) {
+		Godot.Timer timer =GetNode<Godot.Timer>("RechargeTime");
+		timer.WaitTime=rechargeTime;
+		GD.Print("t");
+		timer.OneShot=true;
+	if(Input.IsActionJustPressed("recharge")) {
+		timer.Start();
+		GD.Print("f");
+	}
+	}
+	public void _on_recharge_time_timeout() {
+		magazine=weapon.magazine;
 	}
 	public void inventoryOpenCheck() {
 		
@@ -70,7 +104,7 @@ public partial class player : CharacterBody2D
 		inventory.inventoryAddItem(item);
 	}
 	public void GetPlayerStopTime() {
-		var timer=GetNode<Timer>("Timer");
+		var timer=GetNode<Godot.Timer>("Timer");
 		if(Input.IsActionJustPressed("stopTime") && !timerCheck)  
 		{
 			timerCheck=true;
@@ -79,7 +113,7 @@ public partial class player : CharacterBody2D
 		}
 	}
 	public void _on_timer_timeout() {
-		var timer=GetNode<Timer>("Timer");
+		var timer=GetNode<Godot.Timer>("Timer");
 		timerCheck=false;
 		timer.Stop();
 		GetTree().Paused = false;
@@ -93,7 +127,7 @@ public partial class player : CharacterBody2D
 	}
 	public override void _Ready()
 	{
-		
+		setMagazine();
 		hand = GetNode<Node2D>(handPath);
 		Instance=this;
 		startBattle=GetNode<Node2D>("BattleControl");
